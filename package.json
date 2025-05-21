@@ -8,16 +8,19 @@
     "express": "^5.1.0"
   },
   "scripts": {
-    "prepare": "husky install",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
     "start": "node dist/server.ts",
     "lint": "eslint . --ext .ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "yarn husky install"
   },
   "lint-staged": {
-    "**/*.{ts,tsx}": [
+    "**/*.{js,jsx,ts,tsx}": [
       "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{json,md,css,scss}": [
       "prettier --write"
     ]
   },
