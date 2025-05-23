@@ -43,7 +43,17 @@ express-ts-template/
 yarn install
 ```
 
-### 2. Initialize Git & Husky
+### 2. Set up Database
+
+```bash
+# Generate Prisma Client
+yarn prisma generate
+
+# Run database migrations
+yarn prisma migrate dev --name init
+```
+
+### 3. Initialize Git & Husky
 
 ```bash
 git init
@@ -53,19 +63,19 @@ npx husky add .husky/pre-commit "npx lint-staged"
 
 > This sets up Git hooks for linting and formatting before each commit.
 
-### 3. Start development server
+### 4. Start development server
 
 ```bash
 yarn dev
 ```
 
-### 4. Build for production
+### 5. Build for production
 
 ```bash
 yarn build
 ```
 
-### 5. Run built app
+### 6. Run built app
 
 ```bash
 yarn start

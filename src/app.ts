@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import authRoutes from './routes/auth';
 import { prisma } from './lib/prisma';
 
@@ -9,6 +10,16 @@ dotenv.config();
 
 // Initialize Express app
 const app = express();
+
+// CORS middleware
+app.use(
+  cors({
+    origin: 'http://localhost:3000', // Your frontend URL
+    credentials: true, // Allow cookies to be sent with requests
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 
 // Middleware
 app.use(express.json());
@@ -19,7 +30,7 @@ app.get('/', (_req, res) => {
   res.send('Hello from Express + TypeScript!');
 });
 
-// Auth routes
+// Auth routes - add /api prefix
 app.use('/auth', authRoutes);
 
 // For checking that Prisma is connected

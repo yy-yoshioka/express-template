@@ -1,4 +1,5 @@
-import { PrismaClient } from '@prisma/client';
+// src/lib/prisma.ts
+import { PrismaClient } from '../generated/prisma'; // ✅ 正しいパスに変更
 
 // PrismaClient is attached to the `global` object in development to prevent
 // exhausting your database connection limit.
